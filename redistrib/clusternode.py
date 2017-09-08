@@ -8,6 +8,8 @@ class ClusterNode(object):
                  node_index, link_status, *assigned_slots):
         self.node_id = node_id
         host, port = latest_know_ip_address_and_port.split(':')
+        if '@' in port:
+            port, _ = port.split('@')
         self.host = host
         self.port = int(port)
         self.flags = flags.split(',')
